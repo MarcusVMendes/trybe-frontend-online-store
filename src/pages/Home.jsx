@@ -1,5 +1,6 @@
 import React from 'react';
 import ShoppingCartButton from '../components/ShoppingCartButton';
+import ListCategories from './componentes/ListCategories';
 
 class Home extends React.Component {
   render() {
@@ -12,6 +13,8 @@ class Home extends React.Component {
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
+        {/* { api.getCategories().then((categories) => console.log(categories)  )} */}
+        <ListCategories />
       </div>
     );
   }
