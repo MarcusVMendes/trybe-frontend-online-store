@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import ListCategories from './componentes/ListCategories';
+import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
   return (
-    <div>
-      {/* { api.getCategories().then((categories) => console.log(categories)  )} */}
-      <ListCategories />
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Route exact path="/" component={ Home } />
+      <Route path="/cart" component={ ShoppingCart } />
+    </BrowserRouter>
   );
 }
 
