@@ -1,16 +1,15 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './pages/Home';
-// import * as api from './services/api';
+import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
-  // const productList = api.getProductsFromCategoryAndQuery('MLB5672').then((object) => object);
-
   return (
-    <div>
-      {/* {api.getCategories().then((categories) => { console.log(categories); })} */}
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Route exact path="/" component={ Home } />
+      <Route path="/cart" component={ ShoppingCart } />
+    </BrowserRouter>
   );
 }
 

@@ -1,6 +1,9 @@
 import React from 'react';
 import ProductList from '../components/ProductList';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import ShoppingCartButton from '../components/ShoppingCartButton';
+import ListCategories from '../components/ListCategories';
+// import * as api from './services/api';
 
 class Home extends React.Component {
   constructor() {
@@ -35,17 +38,22 @@ class Home extends React.Component {
 
     return (
       <div>
+
         <input
           type="text"
           data-testid="query-input"
           value={ query }
           onChange={ this.getQueryValue }
         />
+
+        <ShoppingCartButton />
+
         <p
           data-testid="home-initial-message"
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
+
         <button
           type="button"
           data-testid="query-button"
@@ -59,6 +67,10 @@ class Home extends React.Component {
             ? <p>Nenhum produto foi encontrado</p>
             : <ProductList products={ products } />
         }
+
+        {/* { api.getCategories().then((categories) => console.log(categories)  )} */}
+        <ListCategories />
+
       </div>
     );
   }
