@@ -9,12 +9,12 @@ class ShoppingCart extends React.Component {
     return (
       <div>
         <Link to="/"><GiReturnArrow /></Link>
-        <p data-testid="shopping-cart-empty-message">
+        <p>
           <AiOutlineShoppingCart />
           Carrinho de compras
         </p>
         <span><FaBoxOpen /></span>
-        <p>Seu carrinho está vazio</p>
+        <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
       </div>
     );
   }
