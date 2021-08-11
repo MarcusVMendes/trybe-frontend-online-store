@@ -1,6 +1,7 @@
 import React from 'react';
 import ShoppingCartButton from '../components/ShoppingCartButton';
 import ListCategories from './componentes/ListCategories';
+// import * as api from './services/api';
 
 class Home extends React.Component {
   render() {
