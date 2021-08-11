@@ -1,0 +1,23 @@
+.card-list {
+  display: inline-flex;
+}
+
+.card-container {
+  align-items: center;
+  border-style: solid 10px black;
+  display: flex;
+  flex-flow: column wrap;
+  max-width: 250px;
+}
+
+.card-title {
+  font-size: 15px;
+}
+
+.card-image {
+  width: 100px;
+}
+
+.card-price {
+  font-size: 15px;
+}
