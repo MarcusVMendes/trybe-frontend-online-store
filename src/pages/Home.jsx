@@ -3,6 +3,7 @@ import ProductList from '../components/ProductList';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import ShoppingCartButton from '../components/ShoppingCartButton';
 import ListCategories from '../components/ListCategories';
+
 // import * as api from './services/api';
 
 class Home extends React.Component {
