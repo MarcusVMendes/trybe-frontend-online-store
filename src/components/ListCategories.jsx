@@ -1,5 +1,6 @@
 import React from 'react';
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import ProductList from './ProductList';
 // import { getCategories } from './services/api' ;
 
 class ListCategories extends React.Component {
@@ -7,7 +8,10 @@ class ListCategories extends React.Component {
     super();
     this.state = {
       categories: [],
+      products: [],
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -16,15 +20,38 @@ class ListCategories extends React.Component {
     }));
   }
 
+  handleClick(event) {
+    console.log(event.target.value);
+    getProductsFromCategoryAndQuery(event.target.value).then((object) => {
+      this.setState({
+        products: object.results,
+      });
+    });
+  }
+
   render() {
-    const { categories } = this.state;
+    const { categories, products } = this.state;
     return (
-      <ul>
+      <div>
         {
-          categories
-            .map(({ id, name }) => <li key={ id } data-testid="category">{ name }</li>)
+          products.length === 0
+            ? (categories
+              .map(({ id, name }) => (
+                <label htmlFor={ id } key={ id }>
+                  <input
+                    id={ id }
+                    type="radio"
+                    onClick={ this.handleClick }
+                    value={ id }
+                    data-testid="category"
+                  />
+                  { name }
+                  <br />
+                </label>
+              )))
+            : <ProductList products={ products } />
         }
-      </ul>
+      </div>
     );
   }
 }
