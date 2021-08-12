@@ -71,7 +71,6 @@ class Home extends React.Component {
 
         {/* { api.getCategories().then((categories) => console.log(categories)  )} */}
         <ListCategories />
-
       </div>
     );
   }
