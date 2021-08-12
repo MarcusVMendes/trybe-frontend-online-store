@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './ProductList.css';
-import { BrowserRouter } from 'react-router-dom';
 
 class ProductCard extends React.Component {
   constructor() {
@@ -16,24 +16,35 @@ class ProductCard extends React.Component {
   }
 
   render() {
-    const { product: { title, thumbnail, price } } = this.props;
+    const { product } = this.props;
+    const { product: { title, thumbnail, price, id } } = this.props;
     return (
-      <BrowserRouter>
-        <div data-testid="product" className="card-list">
-          <div className="card-container">
-            <h2 className="card-title">{ title }</h2>
-            <img className="card-image" src={ thumbnail } alt={ title } />
-            <p className="card-price">{ price }</p>
-            <button
-              type="button"
-              data-testid="product-add-to-cart"
-              onClick={ this.handleClick }
-            >
-              Adicionar ao Carrinho
-            </button>
+      <div>
+        <Link
+          to={ {
+            pathname: `/details/${id}`,
+            state: product,
+          } }
+          data-testid="product-detail-link"
+        >
+          <div data-testid="product" className="card-list">
+            <div className="card-container">
+              <h2 className="card-title">{ title }</h2>
+              <img className="card-image" src={ thumbnail } alt={ title } />
+              <p className="card-price">{ price }</p>
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </Link>
+        <button
+          type="button"
+          data-testid="product-add-to-cart"
+          onClick={ this.handleClick }
+        >
+          Adicionar ao Carrinho
+        </button>
+      </div>
+      //     </div>
+      // </div>
     );
   }
 }
@@ -43,6 +54,7 @@ ProductCard.propTypes = {
     title: PropTypes.string,
     thumbnail: PropTypes.string,
     price: PropTypes.number,
+    id: PropTypes.number,
   }).isRequired,
 };
 

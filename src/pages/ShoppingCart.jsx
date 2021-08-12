@@ -8,7 +8,7 @@ class ShoppingCart extends React.Component {
   constructor() {
     super();
     this.state = {
-      productAdd: localStorage.getItem('productAdd').split('/'),
+      productAdd: localStorage.getItem('productAdd'),
     };
 
     this.renderProduct = this.renderProduct.bind(this);
