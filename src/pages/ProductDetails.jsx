@@ -2,10 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { GiReturnArrow } from 'react-icons/gi';
 import PropTypes from 'prop-types';
+import ShoppingCartButton from '../components/ShoppingCartButton';
 
 // import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class ProductDetails extends React.Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    const { location: { state: { title } } } = this.props;
+    localStorage.setItem('productAdd', title);
+  }
+
   render() {
     const { location: { state: { title, thumbnail, price, attributes } } } = this.props;
     return (
@@ -23,7 +34,15 @@ class ProductDetails extends React.Component {
                 {atribute.value_name}
               </li>))}
           </ul>
-          <button type="button">Adicionar ao Carrinho</button>
+          <button
+            type="button"
+            data-testid="product-detail-add-to-cart"
+            onClick={ this.handleClick }
+          >
+            Adicionar ao Carrinho
+          </button>
+
+          <ShoppingCartButton />
         </div>
       </div>
     );
