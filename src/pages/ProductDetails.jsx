@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { GiReturnArrow } from 'react-icons/gi';
 import PropTypes from 'prop-types';
 import ShoppingCartButton from '../components/ShoppingCartButton';
+import Ratings from '../components/Ratings';
 
 // import { getProductsFromCategoryAndQuery } from '../services/api';
 
@@ -21,7 +22,6 @@ class ProductDetails extends React.Component {
     const { location: { state: { title, thumbnail, price, attributes } } } = this.props;
     return (
       <div>
-        <Link to="/"><GiReturnArrow /></Link>
         <div>
           <h2 data-testid="product-detail-name">{ title }</h2>
           <img src={ thumbnail } alt="" />
@@ -43,7 +43,10 @@ class ProductDetails extends React.Component {
           </button>
 
           <ShoppingCartButton />
+
+          <Link to="/"><GiReturnArrow /></Link>
         </div>
+        <Ratings />
       </div>
     );
   }
